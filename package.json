@@ -1,0 +1,13 @@
+{
+  "name": "jobledger-app",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c blue,green \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "migrate": "npm run migrate -w backend",
+    "build": "npm run build -w frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
