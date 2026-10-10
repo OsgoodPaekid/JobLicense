@@ -10,10 +10,14 @@ import paymentsRoutes from "./routes/payments.js";
 import dashboardRoutes from "./routes/dashboard.js";
 import reportsRoutes from "./routes/reports.js";
 import stagesRoutes from "./routes/stages.js";
+import { login, requireAuth } from "./auth.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.post("/api/login", login);
+app.use("/api", requireAuth);
 
 app.use("/api/middlemen", middlemenRoutes);
 app.use("/api/clients", clientsRoutes);
